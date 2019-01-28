@@ -12,5 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::prefix('/clientes')->group
+(
+    function()
+    {
+        Route::get('/', function(){
+            return view('clientes');
+        });
+        
+        Route::get('/cadastrar', function(){
+            return view('clientesCadastrar');
+        });
+
+
+    }
+);

@@ -1,0 +1,17 @@
+
+body{
+    background-color: #F5F5F5;
+    height: 100%;
+}
+
+.menuLateral{
+    background-color: #00BFFF;  
+}
+
+.footer{
+    background-color: #CFCFCF;
+}
+
+.espacoLateralEsquerdo{
+    margin-left: 5px;
+}
