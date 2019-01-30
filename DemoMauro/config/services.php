@@ -31,7 +31,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => demoMauro\User::class,
+        'model' => DemoMauro\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
         'webhook' => [

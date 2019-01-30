@@ -29,12 +29,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($clientes as $cli)
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mauro</td>
-                                    <td>058.774.161-97</td>
-                                    <td><i class="material-icons">edit</i>
-                                        <i class="material-icons">cancel</i>
+                                    <th scope="row">{{$cli->id}}</th>
+                                    <td>{{$cli->nome}}</td>
+                                    <td>{{$cli->cpf}}</td>
+                                    <td>
+                                        <a href="/clientes/cadastro/{{$cli->id}}" class="material-icons">edit</a>
+                                        <a href="/clientes/cadastro/remover/{{$cli->id}}" class="material-icons">cancel</a>
                                     </td>
                                 </tr> 
                                 @endforeach                                                                   

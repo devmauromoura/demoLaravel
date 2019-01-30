@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => demoMauro\User::class,
+            'model' => DemoMauro\User::class,
         ],
 
         // 'users' => [

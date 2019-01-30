@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        demoMauro\Providers\AppServiceProvider::class,
-        demoMauro\Providers\AuthServiceProvider::class,
-        // demoMauro\Providers\BroadcastServiceProvider::class,
-        demoMauro\Providers\EventServiceProvider::class,
-        demoMauro\Providers\RouteServiceProvider::class,
+        DemoMauro\Providers\AppServiceProvider::class,
+        DemoMauro\Providers\AuthServiceProvider::class,
+        // DemoMauro\Providers\BroadcastServiceProvider::class,
+        DemoMauro\Providers\EventServiceProvider::class,
+        DemoMauro\Providers\RouteServiceProvider::class,
 
     ],
 

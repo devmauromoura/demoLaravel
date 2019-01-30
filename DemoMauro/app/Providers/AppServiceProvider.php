@@ -1,6 +1,6 @@
 <?php
 
-namespace demoMauro\Providers;
+namespace DemoMauro\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;

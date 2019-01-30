@@ -1,6 +1,6 @@
 <?php
 
-namespace demoMauro\Http\Middleware;
+namespace DemoMauro\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode as Middleware;
 

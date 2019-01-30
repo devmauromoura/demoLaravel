@@ -1,6 +1,6 @@
 <?php
 
-namespace demoMauro;
+namespace DemoMauro;
 
 use Illuminate\Database\Eloquent\Model;
 use lluminate\Support\Facades\DB;
@@ -8,6 +8,7 @@ use lluminate\Support\Facades\DB;
 class Clientes extends Model
 {
     public function listarClientes(){
-        $clientes = DB::table('clientes')->get();
+        $clientes = self::all();
+        return view('/clientes', compact('clientes'));
     }
 }

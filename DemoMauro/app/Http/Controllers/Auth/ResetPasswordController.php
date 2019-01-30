@@ -1,8 +1,8 @@
 <?php
 
-namespace demoMauro\Http\Controllers\Auth;
+namespace DemoMauro\Http\Controllers\Auth;
 
-use demoMauro\Http\Controllers\Controller;
+use DemoMauro\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller

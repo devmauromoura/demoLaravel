@@ -1,6 +1,6 @@
 <?php
 
-namespace demoMauro\Http\Middleware;
+namespace DemoMauro\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
