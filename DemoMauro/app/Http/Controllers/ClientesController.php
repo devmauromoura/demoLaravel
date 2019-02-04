@@ -40,7 +40,7 @@ class ClientesController extends Controller
 
     	$dadosCliente = DB::table('clientes')->where('id', $idCliente)->get();
 
-    	return view::make('clienteSalvar', compact('dadosCliente'));
+    	return view::make('clientes', compact('dadosCliente'));
     }
 
     public function atualizarCliente(Request $request, $id)

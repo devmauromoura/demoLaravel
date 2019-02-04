@@ -20,13 +20,8 @@ Route::prefix('/clientes')->group
     function()
     {
         Route::get('/', 'ClientesController@listarClientes');
-        
-        Route::get('/cadastrar', function(){
-            return view('clientesCadastrar');
-        });
-
         Route::post('/cadastrar/now', 'ClientesController@cadastrarClientes');
-      	Route::get('/cadastro/{id}', 'ClientesController@idCliente');
+      	//Route::get('/cadastro/{id}', 'ClientesController@idCliente');
       	Route::post('/cadastro/atualizar/{id}', 'ClientesController@atualizarCliente');
       	Route::get('/cadastro/remover/{id}', 'ClientesController@removerCliente');
     }
@@ -52,3 +47,11 @@ Route::prefix('/estoque')->group
 );
 
 /* ######################################## CONTROLE VENDAS ######################################## */
+
+Route::prefix('/vendas')->group
+(
+    function()
+    {
+        Route::get('/', 'VendasController@todasVendas');
+        Route::get('/cadastrar', 'VendasController@selecaoVenda');
+ });

@@ -13,9 +13,7 @@ class DashController extends Controller
 	public function DadosGerais(){
 		$totalClientes = DB::table('clientes')->count();
 		$totalProdutos = DB::table('produtos')->count();
-		//$totalVendas = DB::table('vendas')->count();
-
-		$totalVendas = 2;
+		$totalVendas = DB::table('vendas')->count();
 		
 		return view::make('index', compact('totalClientes', 'totalProdutos', 'totalVendas'));
 	}

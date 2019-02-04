@@ -1,49 +1,99 @@
 @extends('layout.app')
+@section('pageTitle', 'Clientes')
 @section('content_page')        
-<div class="col">
-                <div class="row">
-                    <div class="col">
-                        <a href="/clientes/cadastrar" title="Cadastrar" class="material-icons"> add_circle_outline</a>
-                    </div>
-                    <div class="col-10"></div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="buscarCliente" placeholder="Buscar...">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-10"></div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">CPF</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($clientes as $cli)
-                                <tr>
-                                    <th scope="row">{{$cli->id}}</th>
-                                    <td>{{$cli->nome}}</td>
-                                    <td>{{$cli->cpf}}</td>
-                                    <td>
-                                        <a href="/clientes/cadastro/{{$cli->id}}" class="material-icons">edit</a>
-                                        <a href="/clientes/cadastro/remover/{{$cli->id}}" class="material-icons">cancel</a>
-                                    </td>
-                                </tr> 
-                                @endforeach                                                                   
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+    <main>
+        <div class="container">
+            <div class="col s12">
+                <h2>Clientes</h2>
             </div>
-            <!-- =============== FIM CONTEUDO =============== -->
+            <div class="row">
+                 <!-- Chama Modal -->
+                 <button data-target="modal1" class="btn modal-trigger">Novo Cadastro</button>
+                  <!-- Modal Estrutura Novo Cadastro -->
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="row">
+                                <form action="clientes/cadastrar/now" method="post">
+                                    @csrf
+                                    <h4>Cadastrar Novo Cliente</h4>
+                                    <div class="col s6">
+                                        <div class="input-field ">
+                                            <input placeholder="Ex.: Fulano da Silva" id="nomeCompleto" name="nome" type="text" class="validate" required>
+                                            <label for="nomeCompleto">Nome</label>
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="input-field ">
+                                            <input placeholder="Ex.: 000.000.000-00" id="cpf" name="cpf" type="text" class="validate" required>
+                                            <label for="cpf">CPF</label>
+                                        </div>
+                                    </div>
+                                    <button class="btn" type="submit">Salvar</button>
+                                </form>                                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="modal2" class="modal">
+                    <div class="modal-content">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="row">
+                                <form action="clientes/cadastro/atualizar/ID" method="post">
+                                    <?php
+                                        $idClienteAtualizar = "<script>document.write(id)</script>"
+                                    ?>
+                                    @csrf
+                                    <h4>Cadastro Cliente</h4>
+                                    <div class="col s6">
+                                        <div class="input-field ">
+                                            <input id="nomeCompleto" name="nome" type="text" class="validate" required>
+                                            <label for="nomeCompleto">Nome</label>
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="input-field ">
+                                            <input id="cpf" name="cpf" type="text" class="validate" required>
+                                            <label for="cpf">CPF</label>
+                                        </div>
+                                    </div>
+                                    <button class="btn" type="submit">Salvar</button>
+                                </form>                                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                         
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($clientes as $cli)
+                        <tr>
+                            <td>{{$cli->id}}</td>
+                            <td>{{$cli->nome}}</td>
+                            <td>{{$cli->cpf}}</td>
+                            <td><a onclick="buscaDadosCliente('{{$cli->id}}')"   href="" data-target="modal2" class="material-icons modal-trigger">edit</a><a href="clientes/cadastro/remover/{{$cli->id}}" class="material-icons">cancel</a></td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script type="text/javascript">
+        function buscaDadosCliente(idCliente){
+            var id = idCliente;
+            window.location.assign("/cadastro/"+id);
+        }
+    </script>
 @endsection
