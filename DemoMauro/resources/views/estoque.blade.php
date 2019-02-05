@@ -1,56 +1,81 @@
 @extends('layout.app')
 @section('content_page')
-            <!-- =============== COMEÇO CONTEUDO =============== -->
-
-        
-            <div class="col">
-                <div class="row">
-                    <div class="col">
-                        <a href="/estoque/cadastrar" class="material-icons"> add_circle_outline</a>
-                    </div>
-                    <div class="col-10"></div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="buscarCliente" placeholder="Buscar...">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-10"></div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">UND. MED.</th>
-                                    <th scope="col">QNTD</th>
-                                    <th scope="col">R$</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($todosProdutos as $produto)
-                                <tr>
-                                    <th scope="row">{{$produto->id}}</th>
-                                    <td>{{$produto->nome}}</td>
-                                    <td>{{$produto->unid_med}}</td>
-                                    <td>{{$produto->quantidade}}</td>
-                                    <td>{{$produto->valor}}</td>
-                                    <td>
-                                        <a href="/estoque/cadastro/{{$produto->id}}" class="material-icons">edit</a>
-                                        <a href="/estoque/cadastro/remover/{{$produto->id}}" class="material-icons">cancel</a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+    <main>
+        <div class="container">
+            <div class="col s12">
+                <h2>Produtos</h2>
             </div>
-            <!-- =============== FIM CONTEUDO =============== -->
+            <div class="row">
+                 <!-- Modal Trigger -->
+                 <button data-target="modal1" class="btn modal-trigger">Novo Produto</button>    
+                  <!-- Modal Structure -->
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="row">
+                                <form action="" method="post">
+                                    <h4>Cadastrar Novo Produto</h4>
+                                    <div class="col s6">
+                                        <div class="input-field">
+                                            <input placeholder="Ex.: Roteador X" id="nomeProduto" type="text" class="validate" required>
+                                            <label for="nomeProduto">Nome Produto</label>
+                                        </div>
+                                    </div>
+                                    <div class="col s2">
+                                        <div class="input-field">
+                                            <select>
+                                                <option value="und">Unidade</option>
+                                                <option value="mt">Metros</option>
+                                                <option value="kit">Kit</option>
+                                            </select>
+                                            <label>Und. Medida</label>
+                                        </div>
+                                    </div>
+                                    <div class="col s2">
+                                        <div class="input-field">
+                                            <input type="text" id="quantidadeProduto" class="validate" required>
+                                            <label for="quantidadeProduto">Qntd</label>
+                                        </div>
+                                    </div>
+                                    <div class="col s2">
+                                        <div class="input-field">
+                                            <input type="text" id="valorProduto" class="validate" required>
+                                            <label for="valorProduto">Valor R$</label>
+                                        </div>
+                                    </div>
+                                    <button class="btn" type="submit">Salvar</button>
+                                </form>                                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>Und.Medida</th>
+                            <th>Estoque</th>
+                            <th>Valor</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Roteador Intelbras</td>
+                            <td>Unidade</td>
+                            <td>4</td>
+                            <td>75,00</td>
+                            <td><i class="material-icons">edit</i><i class="material-icons">cancel</i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </main>
 @endsection            

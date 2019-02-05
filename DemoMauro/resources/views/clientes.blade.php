@@ -42,21 +42,18 @@
                         <div class="row">
                             <div class="col s12">
                                 <div class="row">
-                                <form action="clientes/cadastro/atualizar/ID" method="post">
-                                    <?php
-                                        $idClienteAtualizar = "<script>document.write(id)</script>"
-                                    ?>
+                                <form action="" method="post">
                                     @csrf
                                     <h4>Cadastro Cliente</h4>
                                     <div class="col s6">
                                         <div class="input-field ">
-                                            <input id="nomeCompleto" name="nome" type="text" class="validate" required>
+                                            <input value="" id="nomeCompleto" name="nome" type="text" class="validate" required>
                                             <label for="nomeCompleto">Nome</label>
                                         </div>
                                     </div>
                                     <div class="col s6">
                                         <div class="input-field ">
-                                            <input id="cpf" name="cpf" type="text" class="validate" required>
+                                            <input data  id="cpf" name="cpf" type="text" class="validate" required>
                                             <label for="cpf">CPF</label>
                                         </div>
                                     </div>
@@ -82,7 +79,7 @@
                             <td>{{$cli->id}}</td>
                             <td>{{$cli->nome}}</td>
                             <td>{{$cli->cpf}}</td>
-                            <td><a onclick="buscaDadosCliente('{{$cli->id}}')"   href="" data-target="modal2" class="material-icons modal-trigger">edit</a><a href="clientes/cadastro/remover/{{$cli->id}}" class="material-icons">cancel</a></td>
+                            <td><a href="" data-nome="{{$cli->nome}}" data-cpf="" data-target="modal2" class="material-icons modal-trigger">edit</a><a href="clientes/cadastro/remover/{{$cli->id}}" class="material-icons">cancel</a></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -91,9 +88,4 @@
         </div>
     </main>
     <script type="text/javascript">
-        function buscaDadosCliente(idCliente){
-            var id = idCliente;
-            window.location.assign("/cadastro/"+id);
-        }
-    </script>
 @endsection

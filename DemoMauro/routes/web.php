@@ -21,7 +21,7 @@ Route::prefix('/clientes')->group
     {
         Route::get('/', 'ClientesController@listarClientes');
         Route::post('/cadastrar/now', 'ClientesController@cadastrarClientes');
-      	//Route::get('/cadastro/{id}', 'ClientesController@idCliente');
+      	Route::get('/cadastro/{id}', 'ClientesController@idCliente')->name('pegarDados');
       	Route::post('/cadastro/atualizar/{id}', 'ClientesController@atualizarCliente');
       	Route::get('/cadastro/remover/{id}', 'ClientesController@removerCliente');
     }
@@ -55,3 +55,7 @@ Route::prefix('/vendas')->group
         Route::get('/', 'VendasController@todasVendas');
         Route::get('/cadastrar', 'VendasController@selecaoVenda');
  });
+
+Route::get('/sobre', function(){
+    return view('sobre');
+});
