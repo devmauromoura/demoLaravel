@@ -43,11 +43,13 @@ class ClientesController extends Controller
     	return view::make('clientes', compact('dadosCliente'));
     }
 
-    public function atualizarCliente(Request $request, $id)
+    public function atualizarCliente(Request $request)
     {
-    	$idUpdate = $id;
+    	$idUpdate = $request->input('idCliente');
     	$nomeUpdate = $request->input('nome');
     	$cpfUpdate = $request->input('cpf');
+
+        //echo $idUpdate."<br>".$nomeUpdate."<br>".$cpfUpdate;
 
     	DB::table('clientes')->where('id', $idUpdate)->update(array('nome' => $nomeUpdate, 'cpf' => $cpfUpdate));
 

@@ -42,19 +42,25 @@
                         <div class="row">
                             <div class="col s12">
                                 <div class="row">
-                                <form action="" method="post">
+                                <form action="/clientes/cadastro/atualizar/" method="post">
                                     @csrf
                                     <h4>Cadastro Cliente</h4>
-                                    <div class="col s6">
-                                        <div class="input-field ">
-                                            <input value="" id="nomeCompleto" name="nome" type="text" class="validate" required>
-                                            <label for="nomeCompleto">Nome</label>
+                                    <div class="col s1">
+                                        <div class="input-field">
+                                            <label>#</label>
+                                            <input placeholder="" id="idCliente" type="text" name="idCliente" value="">
                                         </div>
                                     </div>
                                     <div class="col s6">
                                         <div class="input-field ">
-                                            <input data  id="cpf" name="cpf" type="text" class="validate" required>
-                                            <label for="cpf">CPF</label>
+                                            <label>Nome</label>
+                                            <input placeholder="" value="" id="cNome" name="nome" type="text" class="validate" required>
+                                        </div>
+                                    </div>
+                                    <div class="col s5">
+                                        <div class="input-field ">
+                                            <input placeholder="" id="cCpf" name="cpf" type="text" class="validate" required>
+                                            <label for="cCpf">CPF</label>
                                         </div>
                                     </div>
                                     <button class="btn" type="submit">Salvar</button>
@@ -64,12 +70,12 @@
                         </div>
                     </div>
                 </div>                         
-                <table>
+                <table id="table">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nome</th>
-                            <th>CPF</th>
+                            <th id="nome">Nome</th>
+                            <th id="cpf">CPF</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -79,7 +85,10 @@
                             <td>{{$cli->id}}</td>
                             <td>{{$cli->nome}}</td>
                             <td>{{$cli->cpf}}</td>
-                            <td><a href="" data-nome="{{$cli->nome}}" data-cpf="" data-target="modal2" class="material-icons modal-trigger">edit</a><a href="clientes/cadastro/remover/{{$cli->id}}" class="material-icons">cancel</a></td>
+                            <td>
+                                <a href="" data-nome="{{$cli->nome}}" onclick="editHtmlTbleSelectedRow()" data-target="modal2" class="material-icons modal-trigger">edit</a>
+                                <a href="clientes/cadastro/remover/{{$cli->id}}" class="material-icons">cancel</a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -87,5 +96,41 @@
             </div>
         </div>
     </main>
-    <script type="text/javascript">
+    <script>
+             var rIndex,
+             table = document.getElementById("table");
+         
+         function selectedRowToInput()
+         {
+             
+             for(var i = 1; i < table.rows.length; i++)
+             {
+                 table.rows[i].onclick = function()
+                 {
+                   // get the seected row index
+
+                   rIndex = this.rowIndex;
+                   document.getElementById("idCliente").value = this.cells[0].innerHTML;
+                   document.getElementById("cNome").value = this.cells[1].innerHTML;
+                   document.getElementById("cCpf").value = this.cells[2].innerHTML;
+                 };
+             }
+         }
+         selectedRowToInput();
+         
+         function editHtmlTbleSelectedRow()
+         {
+             var  id = document.getElementById("idCliente").value,
+                nome = document.getElementById("cNome").value,
+                 cpf = document.getElementById("cCpf").value;
+                 
+
+            if(!checkEmptyInput()){
+            table.rows[rIndex].cells[0].innerHTML = id;
+             table.rows[rIndex].cells[1].innerHTML = nome;
+             table.rows[rIndex].cells[2].innerHTML = cpf;
+           }
+         }
+         
+     </script>
 @endsection
