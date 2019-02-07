@@ -33,13 +33,7 @@ Route::prefix('/estoque')->group
     {
         Route::get('/', 'ProdutosController@todosProdutos');
         
-        Route::get('/cadastrar', function()
-        {
-        	return view('produtoCadastrar');
-        });
-
         Route::post('/cadastrar/go', 'ProdutosController@cadastrarProduto');
-        Route::get('/cadastro/{id}', 'ProdutosController@idProduto');
         Route::post('/cadastro/atualizar/{id}', 'ProdutosController@atualizarProduto');
         Route::get('/cadastro/remover/{id}', 'ProdutosController@removerProduto');
     }
