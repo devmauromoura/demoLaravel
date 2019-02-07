@@ -26,13 +26,6 @@ class ProdutosController extends Controller
 		return redirect('estoque');
 	}
 
-	public function idProduto($id){
-		$idProduto = $id;
-		$produtoSelecionado = DB::table('produtos')->where('id', $idProduto)->get();
-
-		return view::make('produtoCadastro', compact('produtoSelecionado'));
-	}
-
 	public function atualizarProduto(Request $request, $id){
 		$idProdutoAtualizar = $id;
 		$nomeProdutoAtualizar = $request->input('nome');

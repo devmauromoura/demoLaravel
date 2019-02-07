@@ -72,7 +72,7 @@
                             <td>{{$prod->unid_med}}</td>
                             <td>{{$prod->quantidade}}</td>
                             <td>{{$prod->valor}}</td>
-                            <td><i class="material-icons">edit</i><i class="material-icons">cancel</i></td>
+                            <td><i class="material-icons">edit</i><a href="/estoque/cadastro/remover/{{$prod->id}}" class="material-icons">cancel</a></td>
                         </tr>
                     </tbody>
                     @endforeach
