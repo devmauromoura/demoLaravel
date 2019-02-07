@@ -35,19 +35,11 @@ class ClientesController extends Controller
     	return redirect('clientes');
     }
 
-    public function idCliente($id){
-    	$idCliente = $id;
-
-    	$dadosCliente = DB::table('clientes')->where('id', $idCliente)->get();
-
-    	return view::make('clientes', compact('dadosCliente'));
-    }
-
     public function atualizarCliente(Request $request)
     {
     	$idUpdate = $request->input('idCliente');
-    	$nomeUpdate = $request->input('nome');
-    	$cpfUpdate = $request->input('cpf');
+    	$nomeUpdate = $request->input('cNome');
+    	$cpfUpdate = $request->input('cCpf');
 
         //echo $idUpdate."<br>".$nomeUpdate."<br>".$cpfUpdate;
 

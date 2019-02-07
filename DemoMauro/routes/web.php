@@ -21,8 +21,7 @@ Route::prefix('/clientes')->group
     {
         Route::get('/', 'ClientesController@listarClientes');
         Route::post('/cadastrar/now', 'ClientesController@cadastrarClientes');
-      	Route::get('/cadastro/{id}', 'ClientesController@idCliente')->name('pegarDados');
-      	Route::post('/cadastro/atualizar', 'ClientesController@atualizarCliente');
+      	Route::get('/cadastro/atualizar', 'ClientesController@atualizarCliente');
       	Route::get('/cadastro/remover/{id}', 'ClientesController@removerCliente');
     }
 );

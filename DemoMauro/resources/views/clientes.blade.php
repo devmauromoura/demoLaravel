@@ -42,7 +42,7 @@
                         <div class="row">
                             <div class="col s12">
                                 <div class="row">
-                                <form action="/clientes/cadastro/atualizar/" method="post">
+                                <form action="/clientes/cadastro/atualizar/" method="get">
                                     @csrf
                                     <h4>Cadastro Cliente</h4>
                                     <div class="col s1">
@@ -54,12 +54,12 @@
                                     <div class="col s6">
                                         <div class="input-field ">
                                             <label>Nome</label>
-                                            <input placeholder="" value="" id="cNome" name="nome" type="text" class="validate" required>
+                                            <input placeholder="" value="" id="cNome" name="cNome" type="text" class="validate" required>
                                         </div>
                                     </div>
                                     <div class="col s5">
                                         <div class="input-field ">
-                                            <input placeholder="" id="cCpf" name="cpf" type="text" class="validate" required>
+                                            <input placeholder="" id="cCpf" name="cCpf" type="text" class="validate" required>
                                             <label for="cCpf">CPF</label>
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@
                             <td>{{$cli->nome}}</td>
                             <td>{{$cli->cpf}}</td>
                             <td>
-                                <a href="" data-nome="{{$cli->nome}}" onclick="editHtmlTbleSelectedRow()" data-target="modal2" class="material-icons modal-trigger">edit</a>
+                                <a href="" onclick="editHtmlTbleSelectedRow()" data-target="modal2" class="material-icons modal-trigger">edit</a>
                                 <a href="clientes/cadastro/remover/{{$cli->id}}" class="material-icons">cancel</a>
                             </td>
                         </tr>
