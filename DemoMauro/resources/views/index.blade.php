@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('pageTitle', 'Índice')
+@section('pageTitle', 'Home')
 @section('content_page')
     <main>
         <div class="container">

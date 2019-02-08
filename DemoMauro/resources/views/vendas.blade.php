@@ -1,4 +1,5 @@
 @extends('layout.app')
+@section('pageTitle', 'Vendas')
 @section('content_page')
     <main>
         <div class="container">
@@ -48,7 +49,7 @@
                         @foreach($todasVendas as $venda)
                         <tr>
                             <td>{{$venda->id}}</td>
-                            <td>{{$venda->idCliente}}</td>
+                            <td>{{$venda->nome}}</td>
                             <td>???</td>
                             <td><i class="material-icons">edit</i><i class="material-icons">cancel</i></td>
                         </tr>

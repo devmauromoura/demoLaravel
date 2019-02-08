@@ -11,7 +11,10 @@ class VendasController extends Controller
 {
     public function todasVendas()
     {
-    	$todasVendas = DB::table('vendas')->get();
+
+        //SELECT clientes.id, clientes.nome FROM clientes INNER JOIN vendas ON vendas.idCliente = clientes.id
+        $todasVendas = DB::table('clientes')->join('vendas','clientes.id','=','vendas.idCliente')->get();
+        //$todasVendas = DB::table('vendas')->get();
         $clientesVenda = DB::table('clientes')->get();
         $produtosVenda = DB::table('produtos')->get();
 
@@ -30,4 +33,5 @@ class VendasController extends Controller
 
         return redirect('vendas');
     }
+    
 }

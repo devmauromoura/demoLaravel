@@ -1,4 +1,5 @@
 @extends('layout.app')
+@section('pageTitle', 'Estoque')
 @section('content_page')
     <main>
         <div class="container">
