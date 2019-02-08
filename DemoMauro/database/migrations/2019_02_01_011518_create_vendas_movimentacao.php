@@ -15,6 +15,9 @@ class CreateVendasMovimentacao extends Migration
     {
         Schema::create('vendas_movimentacao', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('idVenda');
+            $table->integer('idProduto');
+            $table->integer('vendaQuantidade');
             $table->timestamps();
         });
     }

@@ -51,7 +51,7 @@
                             <td>{{$venda->id}}</td>
                             <td>{{$venda->nome}}</td>
                             <td>???</td>
-                            <td><i class="material-icons">edit</i><i class="material-icons">cancel</i></td>
+                            <td><i class="material-icons">edit</i><i class="material-icons">list</i><i class="material-icons">cancel</i></td>
                         </tr>
                         @endforeach
                     </tbody>
