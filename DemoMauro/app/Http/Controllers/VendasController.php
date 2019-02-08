@@ -12,16 +12,22 @@ class VendasController extends Controller
     public function todasVendas()
     {
     	$todasVendas = DB::table('vendas')->get();
+        $clientesVenda = DB::table('clientes')->get();
+        $produtosVenda = DB::table('produtos')->get();
 
-    	return view::make('vendas', compact('todasVendas'));
+    	return view::make('vendas', compact('todasVendas'), compact('clientesVenda'), compact('produtosVenda'));
     }
 
-    public function selecaoVenda(){
+    public function novaVenda(Request $request){
+        $cliente = $request->input('clienteVenda');
 
-    	$clientesVenda = DB::table('clientes')->get();
-    	$produtosVenda = DB::table('produtos')->get();
+        $idClienteArray = DB::table('clientes')->select('id')->where('nome', $cliente)->get();
+        $idCliente = $idClienteArray[0]->id;
 
-    	return view::make('vendasCadastrar', compact('clientesVenda', 'produtosVenda'));
+        DB::table('vendas')->insert([
+            'idCliente' => $idCliente
+        ]);
+
+        return redirect('vendas');
     }
 }
-	

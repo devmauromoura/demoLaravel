@@ -14,34 +14,17 @@
                         <div class="row">
                             <div class="col s12">
                                 <div class="row">
-                                <form action="" method="post">
+                                <form action="/vendas/cadastrar" method="post">
+                                    @csrf
                                     <h4>Cadastrar Venda</h4>
-                                    <div class="col s6">
+                                    <div class="col s12">
                                         <div class="input-field">
-                                            <input placeholder="Ex.: Roteador X" id="nomeProduto" type="text" class="validate" required>
-                                            <label for="nomeProduto">Nome Produto</label>
-                                        </div>
-                                    </div>
-                                    <div class="col s2">
-                                        <div class="input-field">
-                                            <select>
-                                                <option value="und">Unidade</option>
-                                                <option value="mt">Metros</option>
-                                                <option value="kit">Kit</option>
+                                            <select class="browser-default" name="clienteVenda">
+                                                <option disabled selected>Selecione o Cliente</option>
+                                                @foreach($clientesVenda as $cli)
+                                                <option value="{{$cli->nome}}">{{$cli->nome}}</option>
+                                                 @endforeach    
                                             </select>
-                                            <label>Und. Medida</label>
-                                        </div>
-                                    </div>
-                                    <div class="col s2">
-                                        <div class="input-field">
-                                            <input type="text" id="quantidadeProduto" class="validate" required>
-                                            <label for="quantidadeProduto">Qntd</label>
-                                        </div>
-                                    </div>
-                                    <div class="col s2">
-                                        <div class="input-field">
-                                            <input type="text" id="valorProduto" class="validate" required>
-                                            <label for="valorProduto">Valor R$</label>
                                         </div>
                                     </div>
                                     <button class="btn" type="submit">Salvar</button>
@@ -62,12 +45,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($todasVendas as $venda)
                         <tr>
-                            <td>1</td>
-                            <td>Fulano</td>
-                            <td>456</td>
+                            <td>{{$venda->id}}</td>
+                            <td>{{$venda->idCliente}}</td>
+                            <td>???</td>
                             <td><i class="material-icons">edit</i><i class="material-icons">cancel</i></td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

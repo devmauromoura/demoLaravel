@@ -26,8 +26,8 @@ class ProdutosController extends Controller
 		return redirect('estoque');
 	}
 
-	public function atualizarProduto(Request $request, $id){
-		$idProdutoAtualizar = $id;
+	public function atualizarProduto(Request $request){
+		$idProdutoAtualizar = $request->input('idProd');
 		$nomeProdutoAtualizar = $request->input('nome');
 		$unidMedProdutoAtualizar = $request->input('unidMed');
 		$quantidadeProdutoAtualizar = $request->input('quantidade');

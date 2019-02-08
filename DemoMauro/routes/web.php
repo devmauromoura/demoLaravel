@@ -34,7 +34,7 @@ Route::prefix('/estoque')->group
         Route::get('/', 'ProdutosController@todosProdutos');
         
         Route::post('/cadastrar/go', 'ProdutosController@cadastrarProduto');
-        Route::post('/cadastro/atualizar/{id}', 'ProdutosController@atualizarProduto');
+        Route::get('/cadastro/atualizar', 'ProdutosController@atualizarProduto');
         Route::get('/cadastro/remover/{id}', 'ProdutosController@removerProduto');
     }
 );
@@ -46,7 +46,7 @@ Route::prefix('/vendas')->group
     function()
     {
         Route::get('/', 'VendasController@todasVendas');
-        Route::get('/cadastrar', 'VendasController@selecaoVenda');
+        Route::post('/cadastrar', 'VendasController@novaVenda');
  });
 
 Route::get('/sobre', function(){

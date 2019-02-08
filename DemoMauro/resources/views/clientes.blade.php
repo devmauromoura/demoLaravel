@@ -86,7 +86,7 @@
                             <td>{{$cli->nome}}</td>
                             <td>{{$cli->cpf}}</td>
                             <td>
-                                <a href="" onclick="editHtmlTbleSelectedRow()" data-target="modal2" class="material-icons modal-trigger">edit</a>
+                                <a href="" onclick="selectedRowToInput()" data-target="modal2" class="material-icons modal-trigger">edit</a>
                                 <a href="clientes/cadastro/remover/{{$cli->id}}" class="material-icons">cancel</a>
                             </td>
                         </tr>
@@ -117,20 +117,6 @@
              }
          }
          selectedRowToInput();
-         
-         function editHtmlTbleSelectedRow()
-         {
-             var  id = document.getElementById("idCliente").value,
-                nome = document.getElementById("cNome").value,
-                 cpf = document.getElementById("cCpf").value;
-                 
-
-            if(!checkEmptyInput()){
-            table.rows[rIndex].cells[0].innerHTML = id;
-             table.rows[rIndex].cells[1].innerHTML = nome;
-             table.rows[rIndex].cells[2].innerHTML = cpf;
-           }
-         }
          
      </script>
 @endsection
