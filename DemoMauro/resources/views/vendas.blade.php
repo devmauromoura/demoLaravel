@@ -41,15 +41,17 @@
                         <div class="row">
                             <div class="col s12">
                                 <div class="row">
-                                <form action="/vendas/cadastrar" method="post">
+                                <form action="" method="post">
                                     <div class="row">
                                         @csrf
                                         <h4>Cadastrar Produtos na Venda</h4>
                                         <div class="col s10">
                                             <div class="input-field">
-                                                <select class="browser-default" name="clienteVenda">
+                                                <select class="browser-default" name="prodVenda" id="">
                                                     <option disabled selected>Selecione o produto</option>
-                                                    <option value=""></option>
+                                                    @foreach($itemVenda as $item)
+                                                    <option value="{{$item->id}}">{{$item->nome}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -61,13 +63,13 @@
                                         </div>
                                         <div class="row">
                                             <div class="col s12">
-                                                <button class="btn" type="submit">Adicionar</button>
+                                                <button class="btn" onclick="addHtmlTableRow()">Adicionar</button>
                                                 <button class="btn" type="submit">Salvar</button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <table>
+                                        <table id="table">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
@@ -80,10 +82,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>Roteador Dlink</td>
-                                                    <td>1</td>
-                                                    <td>X</td>
+
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -124,4 +123,63 @@
         </div>
         
     </main>
+    <script>
+             var rIndex,
+             table = document.getElementById("table");
+         
+         // add Row
+         function addHtmlTableRow()
+         {
+
+             if(!checkEmptyInput()){
+             var newRow = table.insertRow(table.length),
+                 cell1 = newRow.insertCell(1),
+                 cell2 = newRow.insertCell(2),
+                 produto = document.getElementById("produto").value,
+                 quantidade = document.getElementById("quantidadeProduto").value;
+         
+             cell1.innerHTML = produto;
+             cell2.innerHTML = quantidade;
+             // call the function to set the event to the new row
+             selectedRowToInput();
+         }
+         }
+         
+         // display selected row data into input text
+         function selectedRowToInput()
+         {
+             
+             for(var i = 1; i < table.rows.length; i++)
+             {
+                 table.rows[i].onclick = function()
+                 {
+                   // get the seected row index
+                   rIndex = this.rowIndex;
+                   document.getElementById("produto").value = this.cells[1].innerHTML;
+                   document.getElementById("quantidadeProduto").value = this.cells[2].innerHTML;
+                 };
+             }
+         }
+         selectedRowToInput();
+         
+         function editHtmlTbleSelectedRow()
+         {
+             var produto = document.getElementById("produto").value,
+                 quantidade = document.getElementById("quantidadeProduto").value;
+
+            if(!checkEmptyInput()){
+             table.rows[rIndex].cells[1].innerHTML = produto;
+             table.rows[rIndex].cells[2].innerHTML = quantidade;
+           }
+         }
+         
+         function removeSelectedRow()
+         {
+             table.deleteRow(rIndex);
+             // clear input text
+             document.getElementById("produto").value = "";
+             document.getElementById("quantidadeProduto").value = "";
+
+         }
+     </script>
 @endsection            

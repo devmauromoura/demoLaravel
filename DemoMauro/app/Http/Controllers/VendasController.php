@@ -14,11 +14,10 @@ class VendasController extends Controller
 
         //SELECT clientes.id, clientes.nome FROM clientes INNER JOIN vendas ON vendas.idCliente = clientes.id
         $todasVendas = DB::table('clientes')->join('vendas','clientes.id','=','vendas.idCliente')->get();
-        //$todasVendas = DB::table('vendas')->get();
         $clientesVenda = DB::table('clientes')->get();
-        $produtosVenda = DB::table('produtos')->get();
+        $itemVenda = DB::table('produtos')->get();
 
-    	return view::make('vendas', compact('todasVendas'), compact('clientesVenda'), compact('produtosVenda'));
+    	return view::make('vendas')->with(compact('itemVenda'))->with(compact('todasVendas'))->with(compact('clientesVenda'));
     }
 
     public function novaVenda(Request $request){
