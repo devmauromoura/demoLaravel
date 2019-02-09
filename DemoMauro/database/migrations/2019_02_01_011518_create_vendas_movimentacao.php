@@ -17,7 +17,7 @@ class CreateVendasMovimentacao extends Migration
             $table->increments('id');
             $table->integer('idVenda');
             $table->integer('idProduto');
-            $table->integer('vendaQuantidade');
+            $table->integer('prodQuantidade');
             $table->timestamps();
         });
     }
