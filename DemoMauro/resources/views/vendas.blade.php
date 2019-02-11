@@ -50,7 +50,7 @@
                                                 <select class="browser-default" name="prodVenda" id="produto">
                                                     <option disabled selected>Selecione o produto</option>
                                                     @foreach($itemVenda as $item)
-                                                    <option value="{{$item->id}}">{{$item->nome}}</option>
+                                                    <option>{{$item->nome}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -66,7 +66,6 @@
                                         <table id="table">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
                                                     <th>Produto</th>
                                                     <th>Quantidade</th>
                                                     <th>Valor</th>
@@ -76,6 +75,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr class="myRow">
+
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -125,15 +125,31 @@
     <script>
              var rIndex,
              table = document.getElementById("table");
+             
+             function checkEmptyInput()
+             {
+             var isEmpty = false,
+                 produto = document.getElementById("produto").value,
+                 quantidade = document.getElementById("quantidadeProduto").value;
+         
+             if(produto === ""){
+                 alert("First Name Connot Be Empty");
+                 isEmpty = true;
+             }
+             else if(quantidade === ""){
+                 alert("Last Name Connot Be Empty");
+                 isEmpty = true;
+             }
+             return isEmpty;
+              }             
          
          // add Row
          function addHtmlTableRow()
          {
-
              if(!checkEmptyInput()){
              var newRow = table.insertRow(table.length),
-                 cell1 = newRow.insertCell(1),
-                 cell2 = newRow.insertCell(2),
+                 cell1 = newRow.insertCell(0),
+                 cell2 = newRow.insertCell(1),
                  produto = document.getElementById("produto").value,
                  quantidade = document.getElementById("quantidadeProduto").value;
          
@@ -154,8 +170,8 @@
                  {
                    // get the seected row index
                    rIndex = this.rowIndex;
-                   document.getElementById("produto").value = this.cells[1].innerHTML;
-                   document.getElementById("quantidadeProduto").value = this.cells[2].innerHTML;
+                   document.getElementById("produto").value = this.cells[0].innerHTML;
+                   document.getElementById("quantidadeProduto").value = this.cells[1].innerHTML;
                  };
              }
          }
@@ -168,8 +184,8 @@
 
             if(!checkEmptyInput())
             {
-             table.rows[rIndex].cells[1].innerHTML = produto;
-             table.rows[rIndex].cells[2].innerHTML = quantidade;
+             table.rows[rIndex].cells[0].innerHTML = produto;
+             table.rows[rIndex].cells[1].innerHTML = quantidade;
             }
          }
          
