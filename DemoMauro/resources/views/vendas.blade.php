@@ -47,7 +47,7 @@
                                         <h4>Cadastrar Produtos na Venda</h4>
                                         <div class="col s10">
                                             <div class="input-field">
-                                                <select class="browser-default" name="prodVenda" id="">
+                                                <select class="browser-default" name="prodVenda" id="produto">
                                                     <option disabled selected>Selecione o produto</option>
                                                     @foreach($itemVenda as $item)
                                                     <option value="{{$item->id}}">{{$item->nome}}</option>
@@ -59,12 +59,6 @@
                                             <div class="input-field">
                                                 <label for="quantidadeProduto">Quantidade</label>
                                                 <input type="text" id="quantidadeProduto" class="validate">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col s12">
-                                                <button class="btn" onclick="addHtmlTableRow()">Adicionar</button>
-                                                <button class="btn" type="submit">Salvar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -81,8 +75,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-
+                                                <tr class="myRow">
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -92,7 +85,13 @@
                                             <div class="right-align white-text"><b>Total Venda - R$ 00.41</b></div>
                                         </div>
                                     </div>                            
-                                </form>                                     
+                                </form>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <button class="btn" onclick="addHtmlTableRow()">Adicionar</button>
+                                        <button class="btn" type="submit">Salvar</button>
+                                    </div>
+                                </div>                                                                     
                                 </div>
                             </div>
                         </div>
@@ -114,7 +113,7 @@
                             <td>{{$venda->id}}</td>
                             <td>{{$venda->nome}}</td>
                             <td>???</td>
-                            <td><i class="material-icons">edit</i><a href="" class="material-icons modal-trigger" data-target="modal2">list</a><i class="material-icons">cancel</i></td>
+                            <td><i class="material-icons">edit</i><a href="" class="material-icons modal-trigger" data-target="modal2">list</a><a href="/vendas/remover/{{$venda->id}}" class="material-icons">cancel</a></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -167,10 +166,11 @@
              var produto = document.getElementById("produto").value,
                  quantidade = document.getElementById("quantidadeProduto").value;
 
-            if(!checkEmptyInput()){
+            if(!checkEmptyInput())
+            {
              table.rows[rIndex].cells[1].innerHTML = produto;
              table.rows[rIndex].cells[2].innerHTML = quantidade;
-           }
+            }
          }
          
          function removeSelectedRow()

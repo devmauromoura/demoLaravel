@@ -47,6 +47,7 @@ Route::prefix('/vendas')->group
     {
         Route::get('/', 'VendasController@todasVendas');
         Route::post('/cadastrar', 'VendasController@novaVenda');
+        Route::get('/remover/{id}', 'VendasController@removerVenda');
  });
 
 Route::get('/sobre', function(){

@@ -32,5 +32,11 @@ class VendasController extends Controller
 
         return redirect('vendas');
     }
+
+    public function removerVenda($id){
+        $idVendaRemover = $id;
+        DB::table('vendas')->where('id', $id)->delete();
+    	return redirect('vendas');
+    }
     
 }
