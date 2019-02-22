@@ -39,4 +39,13 @@ class VendasController extends Controller
     	return redirect('vendas');
     }
     
+
+    public function movimentoVenda($id){
+        $idVenda = $id;
+        $dadosVenda = DB::table('vendas')->where(['id' => $idVenda])->get();
+        
+        dd($dadosVenda);
+        //return view::make('vemdasMovimento')->with(compact('dadosVenda'));
+    }
+
 }

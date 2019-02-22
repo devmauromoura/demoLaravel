@@ -16,6 +16,7 @@ class CreateVendas extends Migration
         Schema::create('vendas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idCliente');
+            $table->string('nomeCliente');
             $table->timestamps();
         });
     }
