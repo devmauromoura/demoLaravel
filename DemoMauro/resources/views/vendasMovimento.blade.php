@@ -1,15 +1,18 @@
 @extends('layout.app')
+@section('pageTitle', 'Movimentação')
 @section('content_page')
-               <!-- Modal Cadastro dos produtos na venda -->
-                <div id="modal2" class="modal">
-                    <div class="modal-content">
+  <main>
+        <div class="container">
+            <div class="row">
                         <div class="row">
                             <div class="col s12">
                                 <div class="row">
-                                <form action="" method="post">
+                                <form action="/vendas/movimento/registrarProduto" method="POST">
+                                     @csrf
                                     <div class="row">
-                                        @csrf
-                                        <h4>Cadastrar Produtos na Venda</h4>
+                                        @foreach($dadosVenda as $dadosv)
+                                        <h4>Produtos Venda N° {{$dadosv->id}}</h4>
+                                        @endforeach
                                         <div class="col s10">
                                             <div class="input-field">
                                                 <select class="browser-default" name="prodVenda" id="produto">
@@ -23,7 +26,7 @@
                                         <div class="col s2">
                                             <div class="input-field">
                                                 <label for="quantidadeProduto">Quantidade</label>
-                                                <input type="text" id="quantidadeProduto" class="validate">
+                                                <input type="text" id="quantidadeProduto"  name="quantidadeProduto" class="validate">
                                             </div>
                                         </div>
                                     </div>
@@ -40,7 +43,6 @@
                                             </thead>
                                             <tbody>
                                                 <tr class="myRow">
-
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -49,19 +51,17 @@
                                         <div class="card-panel teal">
                                             <div class="right-align white-text"><b>Total Venda - R$ 00.41</b></div>
                                         </div>
-                                    </div>                            
-                                </form>
-                                <div class="row">
-                                    <div class="col s12">
-                                        <button class="btn" onclick="addHtmlTableRow()">Adicionar</button>
-                                        <button class="btn" type="submit">Salvar</button>
                                     </div>
-                                </div>                                                                     
+                                    <div class="col s12">
+                                        <button class="btn" type="submit">Adicionar</button>
+                                    </div>                            
+                                </form>                                                                  
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>              <!-- =============== COMEÇO CONTEUDO =============== -->
-
-            <!-- =============== FIM CONTEUDO =============== -->
+                </div>  
+            <!-- =============== FIM CONTEUDO =============== -->  
+    </main>
+        
 @endsection

@@ -43,9 +43,21 @@ class VendasController extends Controller
     public function movimentoVenda($id){
         $idVenda = $id;
         $dadosVenda = DB::table('vendas')->where(['id' => $idVenda])->get();
+        $itemVenda = DB::table('produtos')->get();
+        $clientesVenda = DB::table('clientes')->get();
         
-        dd($dadosVenda);
-        //return view::make('vemdasMovimento')->with(compact('dadosVenda'));
+        //dd($dadosVenda);
+        return view::make('vendasMovimento')->with(compact('dadosVenda'))->with(compact('itemVenda'));
+    }
+
+    public function movimentoCadastrar(Request $request){
+       $produtos = $request->input('prodVenda');
+       $quantidade = $request->input('quantidadeProduto');
+
+       //return "Produto: ".$produtos."<br>"."Quantidade: ".$quantidade;
+
+       $mov = new "CRIAR MODEL PARA MOVIEMNTO E INSTANCIAR "
+
     }
 
 }

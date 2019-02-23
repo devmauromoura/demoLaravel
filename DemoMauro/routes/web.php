@@ -49,6 +49,7 @@ Route::prefix('/vendas')->group
         Route::post('/cadastrar', 'VendasController@novaVenda');
         Route::get('/remover/{id}', 'VendasController@removerVenda');
         Route::get('/movimento/{id}', 'VendasController@movimentoVenda');
+        Route::post('/movimento/registrarProduto', 'VendasController@movimentoCadastrar');
  });
 
 Route::get('/sobre', function(){
