@@ -7,7 +7,9 @@
                         <div class="row">
                             <div class="col s12">
                                 <div class="row">
-                                <form action="/vendas/movimento/registrarProduto" method="POST">
+                                @foreach($dadosVenda as $dadosv)
+                                <form action="/vendas/movimento/registrarProduto/{{$dadosv->id}}" method="POST">
+                                @endforeach
                                      @csrf
                                     <div class="row">
                                         @foreach($dadosVenda as $dadosv)
@@ -18,7 +20,7 @@
                                                 <select class="browser-default" name="prodVenda" id="produto">
                                                     <option disabled selected>Selecione o produto</option>
                                                     @foreach($itemVenda as $item)
-                                                    <option>{{$item->nome}} - R${{$item->valor}}</option>
+                                                    <option value="{{$item->id}}">{{$item->nome}} - R${{$item->valor}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

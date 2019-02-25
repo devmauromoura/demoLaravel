@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DemoMauro\Vendas;
 use Illuminate\Support\Facades\View;
-
+use DemoMauro\vendaMovimentacao;
 class VendasController extends Controller
 {
     public function todasVendas()
@@ -50,14 +50,16 @@ class VendasController extends Controller
         return view::make('vendasMovimento')->with(compact('dadosVenda'))->with(compact('itemVenda'));
     }
 
-    public function movimentoCadastrar(Request $request){
-       $produtos = $request->input('prodVenda');
-       $quantidade = $request->input('quantidadeProduto');
+    public function movimentoCadastrar(Request $request, $id){
 
-       //return "Produto: ".$produtos."<br>"."Quantidade: ".$quantidade;
+        $movCad = new vendaMovimentacao;
+        $movCad->idVenda = $id;
+        $movCad->idProduto = $request->input('prodVenda');
+        $movCad->prodQuantidade = $request->input('quantidadeProduto');
 
-       $mov = new "CRIAR MODEL PARA MOVIEMNTO E INSTANCIAR "
+        $movCad->save();
 
+        return redirect('/movimento/'.$id);
     }
 
 }
